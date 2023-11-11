@@ -1,0 +1,47 @@
+﻿@model List<WebApplication1.Models.CreateTest>
+
+@{
+    ViewData["Title"] = "Анкетирование";
+}
+
+
+<form asp-action="SelectedTest" method="get">
+    <h2 align="center">Выберите опрос из списка доступных.</h2>
+    <br />
+    <br />
+
+    <table>
+        <caption style="background:Khaki">Доступные опросы</caption>
+
+        <thead>
+            <tr>
+                <th>Выбор</th>
+                <th>Название опроса</th>
+                <th>Описание</th>
+                <th>Количество вопросов</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td><input name="selectedId" type="radio" value=@Model[i].Id checked /></td>
+                    <td>@Model[i].Name</td>
+                    <td>@Model[i].Description</td>
+                    <td>@Model[i].NumberQuestions</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="2">Итого:</th>
+                <th>@Model.Count</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div align="center">
+    <button type="submit">Начать опрос</button>
+    </div>
+</form>   

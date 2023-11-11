@@ -1,0 +1,104 @@
+﻿@model WebApplication1.ViewModels.AboutTest
+@{
+    ViewData["Title"] = "Анкетирование студентов";
+}
+
+<h3 align="center">Список доступных тестов</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем доступным опросам</caption>
+
+    <thead>
+        <tr>
+            <th>Название опроса</th>
+            <th>Описание</th>
+            <th>Количество вопросов</th>
+            <th>Максимально баллов</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.CreateTests)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.NumberQuestions</td>
+                <td>@item.MaxSum</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого опросов:</th>
+            <th>@Model.CreateTests.Count</th>
+        </tr>
+    </tfoot>
+</table>
+
+@*-------------------------  вторая таблица ---------------------------*@
+<br />
+<h3 align="center">Результаты прохождения тестов</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем пройденным тестам</caption>
+
+    <thead>
+        <tr>
+            <th>Пользователь</th>
+            <th>Группа</th>
+            <th>Название опроса</th>
+            <th>Количество баллов</th>
+            <th>% набранных баллов </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.TestExecutions)
+        {
+            <tr>
+                <td>@item.User.Name</td>
+                <td>@item.User?.Group?.Name</td>
+                <td>@item.CreateTest.Name</td>
+                <td>@item.AnswersSum</td>
+                <td>@(100*item.AnswersSum/item.CreateTest.MaxSum)</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого пройденных тестов:</th>
+            <th>@Model.TestExecutions.Count</th>
+        </tr>
+    </tfoot>
+</table>
+
+@*-------------------------  третья таблица ---------------------------*@
+
+<br />
+<h3 align="center">Статистика</h3>
+<table>
+    <caption style="background:Khaki">Статистика набранных % по тестам</caption>
+
+    <thead>
+        <tr>
+            <th>Тест</th>
+            <th>Кол. тестов, в которых набрано [0;30]% баллов</th>
+            <th>Кол. тестов, в которых набрано [31;60]% баллов</th>
+            <th>Кол. тестов, в которых набрано [61;100]% баллов</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.StatInfo)
+        {
+            <tr>
+                <td>@item.Test.Name</td>
+                <td>@item.To30</td>
+                <td>@item.To60</td>
+                <td>@item.To100</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Зарегистрированные пользователи";
+}
+
+
+
+<h3 align="center">Зарегистрированные пользователи</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем пользователям</caption>
+
+    <thead>
+        <tr>
+            <th>ФИО</th>
+            <th>Возраст</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Группа</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in ViewBag.UsersList)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.Login</td>
+                <td>@item.Password</td>
+                <td>@item.Group?.Name</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого :</th>
+            <th>@ViewBag.UsersList.Count</th>
+        </tr>
+    </tfoot>
+</table>

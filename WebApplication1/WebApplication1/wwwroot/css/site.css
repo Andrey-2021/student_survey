@@ -1,0 +1,92 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    margin: 0;
+    background: #F4F1F8;
+}
+
+
+
+table {
+    border-collapse: collapse; /* Убираем двойную рамку между ячейками */
+    line-height: 1.1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background: radial-gradient(farthest-corner at 50% 50%, white, #DCECF8);
+    color: #0C213B;
+    width: 100%; /* Ширина таблицы */
+}
+
+caption {
+    caption-side: top; /* Заголовок НАД таблицей */
+    font-family: annabelle, cursive;
+    font-weight: bold;
+    font-size: 21px;
+    padding: 10px;
+    color: #F3CD26;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+    text-align: center;
+    background: Khaki;
+}
+
+    caption:before, caption:after {
+        content: "\274B";
+        color: #A9E2CC;
+        margin: 0 10px;
+    }
+
+th {
+    padding: 10px;
+    border: 1px solid #A9E2CC;
+}
+
+td {
+    font-size: 0.8em;
+    padding: 5px 7px; /* Поля в ячейке */
+    border: 1px solid #A9E2CC; /* Параметры границы */
+}
+
+.first {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+button{
+    padding:5px;
+    margin:10px;
+}
+
+.forText {
+    width: 80%;
+    height: 300px;
+    border: 1px solid;
+    margin: auto;
+    background: #25537b;
+    color: #ffffff;
+    text-align: left;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26), 0 4px 12px rgba(0, 0, 0, 0.31);
+    overflow:auto;
+}
+
+/*https://usabili.ru/news/2009/04/27/wrap_in_pre_tags.html*/
+pre {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, с 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ поддерживается в IE, Safari, и Firefox 3.1.*/
+}

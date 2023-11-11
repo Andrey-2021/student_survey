@@ -1,0 +1,28 @@
+﻿@model WebApplication1.Models.CreateTest
+
+@{
+    ViewData["Title"] = "Итого";
+}
+
+<p align="center" style="color:blue; font-size:20px">
+    Название опроса: @Model.Name</p>
+
+<p align="center" style="color:crimson; font-size:22px">
+    Поздравляем! Опрос окончен!
+</p>
+
+<p align="center" style="color:darkviolet; font-size:18px">
+    Всего вопросов: @Model.Questions.Count</p>
+<p align="center" style="color:darkviolet; font-size:18px">
+    Сумма набранных баллов: @ViewBag.RightAnswers</p>
+<div>
+    <p>Информация для анализа результатов:</p>
+</div>
+
+<div class="forText">
+   <pre>@Model.ResultText</pre>
+</div>
+<br />
+<p align="center">
+<a asp-area="" asp-controller="Home" asp-action="index">На главную страницу</a>
+</p>

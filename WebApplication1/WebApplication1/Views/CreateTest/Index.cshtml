@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.CreateTest
+
+@{
+    ViewData["Title"] = "Создание опроса";
+}
+
+<h2 align="center">Создание нового опроса</h2>
+<br />
+<form asp-action="CreateNewTest" method="post">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <table>
+        <caption>Параметры создаваемого опроса</caption>
+        <thead style="background:LightCyan">
+            <tr>
+                <th>Название</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><label asp-for="Name">Название опроса:</label></td>
+                <td><input asp-for="Name"/> <span asp-validation-for="Name"/></td>
+                
+            </tr>
+            <tr>
+                <td><label asp-for="Description">Описание:</label></td>
+                <td><input asp-for="Description"/> <span asp-validation-for="Description" /></td>
+                
+            </tr>
+            <tr>
+                <td><label asp-for="NumberQuestions">Количество вопросов в создаваемом опросе:</label></td>
+                <td><input asp-for="NumberQuestions" /><span asp-validation-for="NumberQuestions" /></td>
+                
+            </tr>
+            <tr>
+                <td><label asp-for="NumberChoiceInQuestion">Количество вариантов ответов в каждом вопросе:</label></td>
+                <td><input asp-for="NumberChoiceInQuestion" /><span asp-validation-for="NumberChoiceInQuestion" /></td>
+                
+            </tr>
+            <tr>
+                <td><label asp-for="ResultText">Результат опроса:</label></td>
+                @*<td><input asp-for="ResultText" style="width:200px; height:50px;" /></td>*@
+                <td><textarea asp-for="ResultText" cols="60" rows="15"></textarea>
+                    <span asp-validation-for="ResultText" />
+                    </td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button type="submit">Создать опрос</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+

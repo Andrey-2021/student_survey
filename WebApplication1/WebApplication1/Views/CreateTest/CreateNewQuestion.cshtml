@@ -1,0 +1,32 @@
+﻿@model WebApplication1.Models.Question
+@{
+    ViewData["Title"] = "Создание вопроса";
+}
+
+<h2 align="center">Создание нового вопроса</h2>
+<h3 align="center">Вопрос №@ViewBag.QuestionCount</h3>
+
+<div class="validation" asp-validation-summary="ModelOnly"></div>
+<form asp-action="CreateNewQuestion" method="post">
+    <p>
+        <label asp-for="Title">Введите вопрос:</label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title" />
+    </p>
+
+
+    @for (var i = 0; i < @ViewBag.NumberChoiceInQuestio; i++)
+    {
+        <div style="margin:5px; padding:5px">
+            <label asp-for="Answers[i].Text">@(i+1)-й ответ:</label>
+            <input asp-for="Answers[i].Text" />
+            <span asp-validation-for="Answers[i].Text" />
+        </div>
+        <div style="margin:5px; padding:5px">
+            <label asp-for="Answers[i].PointsNumber">Количество баллов за ответ:</label>
+            <input asp-for="Answers[i].PointsNumber" />
+            <span asp-validation-for="Answers[i].PointsNumber" />
+        </div>
+    }
+    <button type="submit">Создать ответ</button>
+</form>

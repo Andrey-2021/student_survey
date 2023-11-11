@@ -1,0 +1,48 @@
+﻿@model List<WebApplication1.Models.TestExecution>
+
+@{
+    ViewData["Title"] = "Анкетирование";
+}
+
+
+<form asp-action="DelExecution" method="post">
+
+    <h3 align="center">Выберите опрос для удаления</h3>
+    <table>
+        <caption style="background:Khaki">Информация по всем пройденным тестам</caption>
+
+        <thead>
+            <tr>
+                <th>Выбор</th>
+                <th>Пользователь</th>
+                <th>Название опроса</th>
+                <th>Количество баллов</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input name="selectedId" type="checkbox" value=@item.Id unchecked /></td>
+                    <td>@item.User.Name</td>
+                    <td>@item.CreateTest.Name</td>
+                    <td>@item.AnswersSum</td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Итого пройденных тестов:</th>
+                <th>@Model.Count</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div align="center">
+        <button type="submit">Удалить</button>
+    </div>
+
+</form>
+

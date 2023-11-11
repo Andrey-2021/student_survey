@@ -1,0 +1,54 @@
+﻿@model WebApplication1.Models.Group
+@{
+    ViewData["Title"] = "Создание группы";
+}
+
+
+<h3 align="center">Список групп в БД</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем доступным группам</caption>
+
+    <thead>
+        <tr>
+            <th>Название группы</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in ViewBag.GroupList)
+        {
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого групп:</th>
+            <th>@ViewBag.GroupList.Count</th>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+
+
+
+<h2>Ввод названия новой группы</h2>
+ 
+<form asp-action="CreateNewGroup"  method="post">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Name">Введите название</label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name" />
+        </div>
+
+        <div>
+            <input type="submit" value="Добавить" style="margin:5px; padding:1px"/>
+        </div>
+    </div>
+</form>

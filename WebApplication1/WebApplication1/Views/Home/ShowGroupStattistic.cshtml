@@ -1,0 +1,89 @@
+﻿@model WebApplication1.ViewModels.GroupsStatistic
+@{
+    ViewData["Title"] = "Статистика по группам";
+}
+
+
+
+<h3 align="center">Список доступных тестов</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем доступным опросам</caption>
+
+    <thead>
+        <tr>
+            <th>Название опроса</th>
+            <th>Описание</th>
+            <th>Количество вопросов</th>
+            <th>Максимально баллов</th>
+            <th>Группа</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.CreateTests)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.NumberQuestions</td>
+                <td>@item.MaxSum</td>
+                <td>
+
+                    <table>
+                        <thead>
+                            <tr>
+                        <th>Название</th>
+                        <th>Кол. раз пройден</th>
+                        <th>Сумма баллов</th>
+                        <th>Средний балл</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var group in Model.Groups)
+                            {
+                                
+                                    int count = Model.TestExecutions.Count(x => x.CreateTest.Id == item.Id
+                                            && x.User.Group.Id == group.Id);
+
+                                    int? sum = Model.TestExecutions.Where(x => x.CreateTest.Id == item.Id
+                                            && x.User.Group.Id == group.Id).Sum(z => z.AnswersSum);
+
+                                decimal? avg = null;
+                                if (sum!=null &&  count!=0)
+                                {
+                                    avg = (decimal)sum / count;
+                                }
+
+
+                                <tr>
+                                    <td>@group.Name</td>
+                                    <td>
+                                        @count
+                                        @*@Model.TestExecutions.Count(x=>x.CreateTest.Id==item.Id
+                                            && x.User.Group.Id==group.Id)*@
+                                    </td>
+                                    <td>
+                                        @sum
+                                        @*@Model.TestExecutions.Where(x=>x.CreateTest.Id==item.Id
+                                            && x.User.Group.Id==group.Id).Sum(z=>z.AnswersSum)*@
+                                    </td>
+                                    <td>
+                                        @avg
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого опросов:</th>
+            <th>@Model.CreateTests.Count</th>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,30 @@
+﻿@model WebApplication1.Models.CreateTest
+
+@{
+    ViewData["Title"] = "Отвечай";
+}
+
+<h2 align="center">Название опроса: @Model.Name</h2>
+<h4 align="center">Вопрос @ViewBag.QuestionCount из @Model.Questions.Count</h4>
+<br />
+
+
+
+
+<form asp-action="ShowQuestion" method="post">
+    <p>
+        <h4 style="color:darkorchid">Вопрос:</h4>
+        <label style="margin-left:30px">@Model.Questions[ViewBag.QuestionCount-1].Title</label>
+    </p>
+
+    <h5 style="color:darkorchid">Выберите выриант ответа:</h5>
+
+    @for (var i = 0; i < @Model.NumberChoiceInQuestion; i++)
+    {
+        <p>
+            <input id=@i style="margin-left:30px" name="anserIndex" type="radio" checked value=@i />
+            <label for=@i> @Model.Questions[ViewBag.QuestionCount-1].Answers[i].Text</label>
+        </p>
+    }
+    <button type="submit">Ответить</button>
+</form>

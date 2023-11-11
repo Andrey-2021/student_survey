@@ -1,0 +1,34 @@
+﻿@model  List<WebApplication1.Models.Group>
+@{
+    ViewData["Title"] = "Результат добавления группы";
+}
+
+<h2>@ViewBag.Rezul</h2>
+
+<h3 align="center">Список групп в БД</h3>
+<table>
+    <caption style="background:Khaki">Информация по всем доступным группам</caption>
+
+    <thead>
+        <tr>
+            <th>Название группы</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Итого групп: @Model.Count</th>
+        </tr>
+    </tfoot>
+</table>
+
+

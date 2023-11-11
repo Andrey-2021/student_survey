@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Политика Конфиденциальности";
+}
+<h3 align="center">@ViewData["Title"]</h3>
+
+ @if (User.Identity.IsAuthenticated)
+        {
+            <div align="center" style="color:coral">Вы вошли как: @User.Identity.Name</div>
+        }
+        else
+        {
+        <div align="center" style="color:coral">Неавторизованный пользователь</div>    
+        }
+<div>
+    На этом сайте три категории пользователей:
+    <ul>
+    <li>
+        <div>
+            Неавторизованные пользователи могуть только просмотреть спискок доступных опросов
+            <br />
+            <a asp-action="ShowTestsList">Посмотреть список доступных опросов</a>
+        </div>
+    </li>
+    <li>
+        <div>
+            Авторизованные пользователи могут пройти опрос
+            <br />
+            <a asp-controller="RunTest">Пройти опрос</a>
+        </div>
+    </li>
+    <li>
+        <div>
+            Только администратор может создавать новые опросы
+            <br />
+            <a asp-controller="CreateTest">Создать новой опрос</a>
+        </div>
+</ul>
+</div>

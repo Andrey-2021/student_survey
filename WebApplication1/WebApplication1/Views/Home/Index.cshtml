@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Анкетирование студентов";
+}
+
+
+<h2 align="center">@ViewBag.Greeting!</h2>
+<h3 align="center">Поздравляем! Вы пришли на сайт анкетирования!</h3>
+
+<ul>
+    <li>
+        <div>
+            Ресурсы доступные для всех:
+            <br />
+            <a asp-action="ShowTestsList">Результаты опросов</a>
+            <br />
+            <a asp-action="ShowGroupStattistic">Статистика по группам</a>
+        </div>
+    </li>
+    
+    <li>
+        <div>
+            Ресур доступен только для авторизованных пользователей:
+            <br />
+            <a asp-controller="RunTest">Пройти опрос</a>
+        </div>
+    </li>
+
+    <li>
+        <div>
+            Ресурсы доступеные только администратору:
+            <br />
+            <a asp-controller="CreateTest">Создание нового опроса</a>
+            <br />
+            <a asp-controller="CreateTest" asp-action="DelExecution">Удалить опросы</a>
+            <br />
+            <a asp-controller="CreateTest" asp-action="CreateNewGroup">Ввод новой группы</a>
+            <br />
+            <a asp-controller="CreateTest" asp-action="ShowUserInfo">Информация по зарегистрированным пользователям</a>
+        </div>
+    </li>
+    
+</ul>
+
+
